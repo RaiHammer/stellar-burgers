@@ -1,7 +1,17 @@
 {
   "success": true,
-  "name": "Test Order",
+  "name": "Краторный бургер",
   "order": {
-    "number": 12345
+    "_id": "12345",
+    "status": "done",
+    "name": "Краторный бургер",
+    "createdAt": "2024-01-01T00:00:00.000Z",
+    "updatedAt": "2024-01-01T00:00:00.000Z",
+    "number": 12345,
+    "ingredients": [
+      "643d69a5c3f7b9001cfa093c",
+      "643d69a5c3f7b9001cfa0941",
+      "643d69a5c3f7b9001cfa093c"
+    ]
   }
 }

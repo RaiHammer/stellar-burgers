@@ -1,24 +1,52 @@
-import reducer, { 
-  loginUser, 
-  registerUser, 
-  fetchUser, 
-  updateUser, 
-  logoutUser 
-} from './userSlice';
-import { TUser } from '@utils-types';
+jest.mock('@api', () => ({
+  loginUserApi: jest.fn(),
+  registerUserApi: jest.fn(),
+  getUserApi: jest.fn(),
+  updateUserApi: jest.fn(),
+  logoutApi: jest.fn()
+}));
 
-// Мокаем localStorage и setCookie
 const mockSetCookie = jest.fn();
+const mockSetItem = jest.fn();
+const mockRemoveItem = jest.fn();
+
 jest.mock('../../utils/cookie', () => ({
   setCookie: (...args: any[]) => mockSetCookie(...args)
 }));
+
+Object.defineProperty(window, 'localStorage', {
+  value: {
+    setItem: mockSetItem,
+    removeItem: mockRemoveItem,
+    getItem: jest.fn(),
+    clear: jest.fn()
+  },
+  writable: true
+});
+
+import reducer, {
+  loginUser,
+  registerUser,
+  fetchUser,
+  updateUser,
+  logoutUser
+} from './userSlice';
+import {
+  loginUserApi,
+  registerUserApi,
+  getUserApi,
+  updateUserApi,
+  logoutApi
+} from '@api';
 
 describe('userSlice reducer', () => {
   const initialState = reducer(undefined, { type: '@@INIT' });
 
   beforeEach(() => {
-    localStorage.clear();
     jest.clearAllMocks();
+    mockSetItem.mockClear();
+    mockRemoveItem.mockClear();
+    mockSetCookie.mockClear();
   });
 
   it('должен возвращать начальное состояние', () => {
@@ -29,125 +57,154 @@ describe('userSlice reducer', () => {
       error: null
     });
   });
+});
 
-  describe('loginUser', () => {
-    it('должен обрабатывать pending состояние', () => {
-      const action = { type: loginUser.pending.type };
-      const state = reducer(initialState, action);
-      
-      expect(state.loading).toBe(true);
-      expect(state.error).toBeNull();
-    });
+describe('userSlice thunks', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockSetItem.mockClear();
+    mockRemoveItem.mockClear();
+    mockSetCookie.mockClear();
+  });
 
-    it('должен обрабатывать fulfilled состояние', () => {
-      const userData: TUser = {
+  describe('loginUser thunk', () => {
+    it('должен вызывать loginUserApi с правильными данными', async () => {
+      const mockUser = { email: 'test@example.com', name: 'Test User' };
+      const mockResponse = {
+        success: true,
+        user: mockUser,
+        accessToken: 'test-access-token',
+        refreshToken: 'test-refresh-token'
+      };
+
+      (loginUserApi as jest.Mock).mockResolvedValue(mockResponse);
+
+      const credentials = {
         email: 'test@example.com',
-        name: 'Test User'
+        password: 'password123'
       };
-      
-      const action = {
-        type: loginUser.fulfilled.type,
-        payload: userData
-      };
-      
-      const state = reducer(initialState, action);
-      
-      expect(state.loading).toBe(false);
-      expect(state.user).toEqual(userData);
-      expect(state.isAuthChecked).toBe(true);
-      expect(state.error).toBeNull();
-    });
+      const dispatch = jest.fn();
+      const getState = jest.fn();
 
-    it('должен обрабатывать rejected состояние', () => {
-      const errorMessage = 'Ошибка входа';
-      const action = {
-        type: loginUser.rejected.type,
-        error: { message: errorMessage }
-      };
-      
-      const state = reducer(initialState, action);
-      
-      expect(state.loading).toBe(false);
-      expect(state.error).toBe(errorMessage);
-      expect(state.user).toBeNull();
+      const thunk = loginUser(credentials);
+      const result = await thunk(dispatch, getState, undefined);
+
+      expect(loginUserApi).toHaveBeenCalledWith(credentials);
+      expect(mockSetItem).toHaveBeenCalledWith(
+        'refreshToken',
+        'test-refresh-token'
+      );
+      expect(mockSetCookie).toHaveBeenCalledWith(
+        'accessToken',
+        'test-access-token'
+      );
+      expect(result.type).toBe('user/login/fulfilled');
+      expect(result.payload).toEqual(mockUser);
     });
   });
 
-  describe('registerUser', () => {
-    it('должен обрабатывать pending состояние', () => {
-      const action = { type: registerUser.pending.type };
-      const state = reducer(initialState, action);
-      
-      expect(state.loading).toBe(true);
-      expect(state.error).toBeNull();
-    });
-
-    it('должен обрабатывать fulfilled состояние', () => {
-      const userData: TUser = {
-        email: 'registered@example.com',
-        name: 'Registered User'
+  describe('registerUser thunk', () => {
+    it('должен вызывать registerUserApi с правильными данными', async () => {
+      const mockUser = { email: 'new@example.com', name: 'New User' };
+      const mockResponse = {
+        success: true,
+        user: mockUser,
+        accessToken: 'new-access-token',
+        refreshToken: 'new-refresh-token'
       };
-      
-      const action = {
-        type: registerUser.fulfilled.type,
-        payload: userData
-      };
-      
-      const state = reducer(initialState, action);
-      
-      expect(state.loading).toBe(false);
-      expect(state.user).toEqual(userData);
-      expect(state.isAuthChecked).toBe(true);
-    });
-  });
 
-  describe('fetchUser', () => {
-    it('должен обрабатывать pending состояние', () => {
-      const action = { type: fetchUser.pending.type };
-      const state = reducer(initialState, action);
-      
-      expect(state.loading).toBe(true);
-    });
+      (registerUserApi as jest.Mock).mockResolvedValue(mockResponse);
 
-    it('должен обрабатывать fulfilled состояние', () => {
-      const userData: TUser = {
-        email: 'fetched@example.com',
-        name: 'Fetched User'
+      const userData = {
+        email: 'new@example.com',
+        password: 'password123',
+        name: 'New User'
       };
-      
-      const action = {
-        type: fetchUser.fulfilled.type,
-        payload: userData
-      };
-      
-      const state = reducer(initialState, action);
-      
-      expect(state.loading).toBe(false);
-      expect(state.user).toEqual(userData);
-      expect(state.isAuthChecked).toBe(true);
-    });
+      const dispatch = jest.fn();
+      const getState = jest.fn();
 
-    it('должен обрабатывать rejected состояние', () => {
-      const action = { type: fetchUser.rejected.type };
-      const state = reducer(initialState, action);
-      
-      expect(state.loading).toBe(false);
-      expect(state.isAuthChecked).toBe(true);
-      expect(state.user).toBeNull();
+      const thunk = registerUser(userData);
+      const result = await thunk(dispatch, getState, undefined);
+
+      expect(registerUserApi).toHaveBeenCalledWith(userData);
+      expect(mockSetItem).toHaveBeenCalledWith(
+        'refreshToken',
+        'new-refresh-token'
+      );
+      expect(mockSetCookie).toHaveBeenCalledWith(
+        'accessToken',
+        'new-access-token'
+      );
+      expect(result.type).toBe('user/register/fulfilled');
+      expect(result.payload).toEqual(mockUser);
     });
   });
 
-  describe('logoutUser', () => {
-    it('должен очищать пользователя при fulfilled', () => {
-      const stateWithUser = {
-        ...initialState,
-        user: { email: 'test@example.com', name: 'Test User' }
+  describe('fetchUser thunk', () => {
+    it('должен вызывать getUserApi и возвращать данные пользователя', async () => {
+      const mockUser = { email: 'existing@example.com', name: 'Existing User' };
+      const mockResponse = {
+        success: true,
+        user: mockUser
       };
-      
-      const action = { type: logoutUser.fulfilled.type };
-      const state = reducer(stateWithUser, action);
-      
-      expect(state.user).toBeNull();
+
+      (getUserApi as jest.Mock).mockResolvedValue(mockResponse);
+
+      const dispatch = jest.fn();
+      const getState = jest.fn();
+
+      const thunk = fetchUser();
+      const result = await thunk(dispatch, getState, undefined);
+
+      expect(getUserApi).toHaveBeenCalled();
+      expect(result.type).toBe('user/fetchUser/fulfilled');
+      expect(result.payload).toEqual(mockUser);
+    });
+  });
+
+  describe('updateUser thunk', () => {
+    it('должен вызывать updateUserApi с обновленными данными', async () => {
+      const mockUser = { email: 'updated@example.com', name: 'Updated User' };
+      const mockResponse = {
+        success: true,
+        user: mockUser
+      };
+
+      (updateUserApi as jest.Mock).mockResolvedValue(mockResponse);
+
+      const userData = {
+        name: 'Updated User',
+        email: 'updated@example.com',
+        password: 'newpassword'
+      };
+      const dispatch = jest.fn();
+      const getState = jest.fn();
+
+      const thunk = updateUser(userData);
+      const result = await thunk(dispatch, getState, undefined);
+
+      expect(updateUserApi).toHaveBeenCalledWith(userData);
+      expect(result.type).toBe('user/updateUser/fulfilled');
+      expect(result.payload).toEqual(mockUser);
+    });
+  });
+
+  describe('logoutUser thunk', () => {
+    it('должен вызывать logoutApi и очищать токены', async () => {
+      (logoutApi as jest.Mock).mockResolvedValue({ success: true });
+
+      const dispatch = jest.fn();
+      const getState = jest.fn();
+
+      const thunk = logoutUser();
+      const result = await thunk(dispatch, getState, undefined);
+
+      expect(logoutApi).toHaveBeenCalled();
+      expect(mockRemoveItem).toHaveBeenCalledWith('refreshToken');
+      expect(mockSetCookie).toHaveBeenCalledWith('accessToken', '', {
+        expires: -1
+      });
+      expect(result.type).toBe('user/logout/fulfilled');
     });
   });
 });

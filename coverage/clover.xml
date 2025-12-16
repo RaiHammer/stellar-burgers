@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1765811432888" clover="3.2.0">
-  <project timestamp="1765811432888" name="All files">
-    <metrics statements="1023" coveredstatements="108" conditionals="298" coveredconditionals="5" methods="308" coveredmethods="24" elements="1629" coveredelements="137" complexity="0" loc="1023" ncloc="1023" packages="58" files="123" classes="123"/>
+<coverage generated="1765886690976" clover="3.2.0">
+  <project timestamp="1765886690976" name="All files">
+    <metrics statements="1023" coveredstatements="136" conditionals="298" coveredconditionals="10" methods="308" coveredmethods="37" elements="1629" coveredelements="183" complexity="0" loc="1023" ncloc="1023" packages="58" files="123" classes="123"/>
     <package name="components">
       <metrics statements="14" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="C:\Users\raih\Desktop\Learn\dev\new\stellar-burgers\src\components\index.ts">
@@ -1186,13 +1186,13 @@
       <metrics statements="15" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="rootReducer.ts" path="C:\Users\raih\Desktop\Learn\dev\new\stellar-burgers\src\services\rootReducer.ts">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
       </file>
       <file name="store.ts" path="C:\Users\raih\Desktop\Learn\dev\new\stellar-burgers\src\services\store.ts">
         <metrics statements="8" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
@@ -1207,61 +1207,61 @@
       </file>
     </package>
     <package name="services.slices">
-      <metrics statements="147" coveredstatements="81" conditionals="27" coveredconditionals="5" methods="56" coveredmethods="24"/>
+      <metrics statements="147" coveredstatements="109" conditionals="27" coveredconditionals="10" methods="56" coveredmethods="37"/>
       <file name="burgerConstructorSlice.ts" path="C:\Users\raih\Desktop\Learn\dev\new\stellar-burgers\src\services\slices\burgerConstructorSlice.ts">
-        <metrics statements="36" coveredstatements="22" conditionals="5" coveredconditionals="3" methods="15" coveredmethods="8"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
+        <metrics statements="36" coveredstatements="33" conditionals="5" coveredconditionals="4" methods="15" coveredmethods="13"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="9" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="10" count="0" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="28" count="2" type="stmt"/>
-        <line num="33" count="3" type="stmt"/>
-        <line num="34" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="35" count="1" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
+        <line num="34" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="35" count="4" type="stmt"/>
         <line num="37" count="2" type="stmt"/>
-        <line num="40" count="3" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
+        <line num="40" count="6" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
         <line num="49" count="1" type="stmt"/>
-        <line num="53" count="1" type="stmt"/>
-        <line num="54" count="2" type="stmt"/>
-        <line num="56" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="54" count="3" type="stmt"/>
+        <line num="56" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="57" count="1" type="stmt"/>
         <line num="58" count="1" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="66" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="73" count="2" type="stmt"/>
-        <line num="75" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="79" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="90" count="2" type="stmt"/>
-        <line num="97" count="2" type="stmt"/>
+        <line num="63" count="2" type="stmt"/>
+        <line num="64" count="5" type="stmt"/>
+        <line num="66" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="73" count="3" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="79" count="1" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="90" count="3" type="stmt"/>
+        <line num="97" count="3" type="stmt"/>
       </file>
       <file name="ingredientsSlice.ts" path="C:\Users\raih\Desktop\Learn\dev\new\stellar-burgers\src\services\slices\ingredientsSlice.ts">
         <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="4"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
-        <line num="27" count="2" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
         <line num="37" count="1" type="stmt"/>
         <line num="38" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="43" count="2" type="stmt"/>
+        <line num="43" count="3" type="stmt"/>
       </file>
       <file name="orderSlice.ts" path="C:\Users\raih\Desktop\Learn\dev\new\stellar-burgers\src\services\slices\orderSlice.ts">
         <metrics statements="16" coveredstatements="7" conditionals="3" coveredconditionals="0" methods="6" coveredmethods="1"/>
@@ -1283,64 +1283,64 @@
         <line num="46" count="2" type="stmt"/>
       </file>
       <file name="ordersSlices.ts" path="C:\Users\raih\Desktop\Learn\dev\new\stellar-burgers\src\services\slices\ordersSlices.ts">
-        <metrics statements="25" coveredstatements="8" conditionals="6" coveredconditionals="0" methods="9" coveredmethods="1"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="34" count="2" type="stmt"/>
-        <line num="35" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="39" count="2" type="stmt"/>
-        <line num="44" count="2" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="64" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="71" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="76" count="2" type="stmt"/>
+        <metrics statements="25" coveredstatements="25" conditionals="6" coveredconditionals="4" methods="9" coveredmethods="9"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="35" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="39" count="4" type="stmt"/>
+        <line num="44" count="4" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="76" count="4" type="stmt"/>
       </file>
       <file name="userSlice.ts" path="C:\Users\raih\Desktop\Learn\dev\new\stellar-burgers\src\services\slices\userSlice.ts">
         <metrics statements="57" coveredstatements="31" conditionals="11" coveredconditionals="1" methods="22" coveredmethods="10"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="29" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
+        <line num="36" count="3" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
         <line num="39" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="40" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
         <line num="42" count="0" type="stmt"/>
-        <line num="46" count="2" type="stmt"/>
+        <line num="46" count="3" type="stmt"/>
         <line num="47" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="48" count="0" type="stmt"/>
-        <line num="51" count="2" type="stmt"/>
+        <line num="51" count="3" type="stmt"/>
         <line num="53" count="0" type="stmt"/>
         <line num="54" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="55" count="0" type="stmt"/>
-        <line num="59" count="2" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
         <line num="60" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="61" count="0" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
-        <line num="65" count="2" type="stmt"/>
-        <line num="70" count="2" type="stmt"/>
+        <line num="65" count="3" type="stmt"/>
+        <line num="70" count="3" type="stmt"/>
         <line num="72" count="1" type="stmt"/>
         <line num="73" count="1" type="stmt"/>
         <line num="76" count="1" type="stmt"/>
@@ -1368,7 +1368,7 @@
         <line num="118" count="0" type="stmt"/>
         <line num="119" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="122" count="1" type="stmt"/>
-        <line num="127" count="2" type="stmt"/>
+        <line num="127" count="3" type="stmt"/>
       </file>
     </package>
     <package name="stories">

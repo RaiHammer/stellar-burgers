@@ -1,5 +1,5 @@
 // Моки для API функций
-export const getIngredientsApi = jest.fn(() => 
+export const getIngredientsApi = jest.fn(() =>
   Promise.resolve([
     {
       _id: '60666c42cc7b410027a1a9b1',
@@ -17,39 +17,30 @@ export const getIngredientsApi = jest.fn(() =>
   ])
 );
 
-export const orderBurgerApi = jest.fn((ingredients: string[]) => 
-  Promise.resolve({ 
+export const orderBurgerApi = jest.fn((ingredients: string[]) =>
+  Promise.resolve({
     success: true,
     name: 'Метеоритный бургер',
-    order: { 
+    order: {
       _id: '123',
       status: 'done',
       name: 'Метеоритный бургер',
       createdAt: '2024-01-01T00:00:00.000Z',
       updatedAt: '2024-01-01T00:00:00.000Z',
       number: 12345,
-      ingredients 
+      ingredients
     }
   })
 );
 
-export const getUserApi = jest.fn(() => 
+export const getUserApi = jest.fn(() =>
   Promise.resolve({
     success: true,
     user: { email: 'test@example.com', name: 'Test User' }
   })
 );
 
-export const loginUserApi = jest.fn(() => 
-  Promise.resolve({
-    success: true,
-    accessToken: 'test-access-token',
-    refreshToken: 'test-refresh-token',
-    user: { email: 'test@example.com', name: 'Test User' }
-  })
-);
-
-export const registerUserApi = jest.fn(() => 
+export const loginUserApi = jest.fn(() =>
   Promise.resolve({
     success: true,
     accessToken: 'test-access-token',
@@ -58,26 +49,33 @@ export const registerUserApi = jest.fn(() =>
   })
 );
 
-export const logoutApi = jest.fn(() => 
-  Promise.resolve({ success: true })
+export const registerUserApi = jest.fn(() =>
+  Promise.resolve({
+    success: true,
+    accessToken: 'test-access-token',
+    refreshToken: 'test-refresh-token',
+    user: { email: 'test@example.com', name: 'Test User' }
+  })
 );
 
-export const updateUserApi = jest.fn(() => 
+export const logoutApi = jest.fn(() => Promise.resolve({ success: true }));
+
+export const updateUserApi = jest.fn(() =>
   Promise.resolve({
     success: true,
     user: { email: 'updated@example.com', name: 'Updated User' }
   })
 );
 
-export const forgotPasswordApi = jest.fn(() => 
+export const forgotPasswordApi = jest.fn(() =>
   Promise.resolve({ success: true, message: 'Reset email sent' })
 );
 
-export const resetPasswordApi = jest.fn(() => 
+export const resetPasswordApi = jest.fn(() =>
   Promise.resolve({ success: true, message: 'Password successfully reset' })
 );
 
-export const getOrderApi = jest.fn(() => 
+export const getOrderApi = jest.fn(() =>
   Promise.resolve({
     success: true,
     orders: [
@@ -94,7 +92,7 @@ export const getOrderApi = jest.fn(() =>
   })
 );
 
-export const getOrdersApi = jest.fn(() => 
+export const getOrdersApi = jest.fn(() =>
   Promise.resolve({
     success: true,
     orders: [
@@ -110,5 +108,22 @@ export const getOrdersApi = jest.fn(() =>
     ],
     total: 1,
     totalToday: 1
+  })
+);
+
+export const getOrderByNumberApi = jest.fn((orderNumber: number) =>
+  Promise.resolve({
+    success: true,
+    orders: [
+      {
+        _id: 'order1',
+        status: 'done',
+        name: 'Тестовый заказ',
+        createdAt: '2024-01-01T00:00:00.000Z',
+        updatedAt: '2024-01-01T00:00:00.000Z',
+        number: orderNumber,
+        ingredients: ['60666c42cc7b410027a1a9b1']
+      }
+    ]
   })
 );
